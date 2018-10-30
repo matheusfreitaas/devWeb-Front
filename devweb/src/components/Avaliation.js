@@ -6,12 +6,13 @@ import Button from '@material-ui/core/Button';
 import green from '@material-ui/core/colors/green';
 
 const styles = theme => ({
-   container: {
-     display: 'flex',   
-     flexWrap: 'wrap',
-   },
+  flexContainer: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    flexWrap: 'wrap',
+  },
    button: {
-      margin: theme.spacing.unit,
+      margin: '2rem',
       primary: green,
     },
 })
@@ -35,20 +36,22 @@ class Avaliation extends Component{
       const { classes } = this.props;
 
       return(
-         <avaliation className={classes.container}>
-            <div>
-               <ul>
-                  <li><Question></Question></li>
-                  <li><Question></Question></li>
-                  <li><Question></Question></li>
-               </ul>
-               <MuiThemeProvider theme={theme}>
-                  <Button variant="contained" color="primary" className={classes.button}>
-                     ENVIAR AVALIAÇÃO
-                  </Button>
-               </MuiThemeProvider>
-            </div>
-         </avaliation>
+        <div>
+          <div className={classes.flexContainer}>
+            <Question class='flex-item'></Question>
+            <Question class='flex-item'></Question>
+            <Question class='flex-item'></Question>
+            <Question class='flex-item'></Question>
+            <Question class='flex-item'></Question>
+            <Question class='flex-item'></Question>
+            <Question class='flex-item'></Question>
+          </div>
+          <MuiThemeProvider theme={theme}>
+            <Button variant="contained" color="primary" className={classes.button}>
+              Enviar avaliação
+            </Button>
+          </MuiThemeProvider>
+        </div>
       );
    }
 }

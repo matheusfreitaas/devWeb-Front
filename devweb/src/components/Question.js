@@ -1,107 +1,42 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import '../App.css';
+import TextBoxInput from "./TextBoxInput";
+import AnswerBox from "./AnswerBox";
+import Card from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
+import CardContent from '@material-ui/core/CardContent';
 
 const styles = theme => ({
-   textField: {
-     marginLeft: theme.spacing.unit,
-     marginRight: theme.spacing.unit,
-   },
-   divider: {
-      width: '100%',
-      backgroundColor: theme.palette.background.paper,
+   card: {
+      minWidth: 275,
+      margin: theme.spacing.unit,
     },
-    container: {
-       borderStyle: 'solid',
-       margin: theme.spacing.unit,
-    }
+    title: {
+      fontSize: 14,
+    },
  });
 
-const answer = [
-  {
-    value: 'Péssimo',
-    label: 'Péssimo',
-  },
-  {
-    value: 'Ruim',
-    label: 'Ruim',
-  },
-  {
-    value: 'Bom',
-    label: 'Bom',
-  },
-  {
-    value: 'Ótimo',
-    label: 'Ótimo',
-  }, 
-  {
-   value: 'Excelente',
-   label: 'Excelente',
- },
-];
-
 class Question extends React.Component {
-  state = {
-    coment: '',
-    answer: 'Bom'
-  };
+   state = {
+      title: 'Titulo', 
+   };
 
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value
-    });
-  };
-
-  render() {
-    const { classes } = this.props;
-
-    return (
-      <div className={classes.container}>
-         <h1 className={classes.divider}>Pergunta</h1>
-         <hr/>
-         <form noValidate autoComplete="off">
-            <TextField
-               id="coment-id"
-               label="Comentário"
-               multiline
-               rowsMax="10"
-               value={this.state.coment}
-               onChange={this.handleChange('coment')}
-               className={classes.textField}
-               margin="normal"
-               helperText="Você pode escrever um comentário sobre a pergunta."
-               variant="outlined"
-         />
-            <TextField
-            id="answer-id"
-            select
-            label="Resposta"
-            className={classes.textField}
-            value={this.state.answer}
-            onChange={this.handleChange('answer')}
-            SelectProps={{
-               native: true,
-               MenuProps: {
-               className: classes.menu,
-               },
-            }}
-            helperText="Escolha uma resposta para a pergunta."
-            margin="normal"
-            variant="outlined"
-         >
-            {answer.map(option => (
-               <option key={option.value} value={option.value}>
-               {option.label}
-               </option>
-            ))}
-         </TextField>
-         </form>
-      </div>
+   render() {
+      const { classes } = this.props;
       
-    );
-  }
+      return (
+         <Card className={classes.card}>
+            <CardContent>
+               <Typography className={classes.title} color="textSecondary" gutterBottom>
+                  {this.state.title}
+               </Typography>
+               <AnswerBox></AnswerBox>
+               <TextBoxInput></TextBoxInput>
+            </CardContent>
+         </Card>
+      );
+   }
 }
 
 Question.propTypes = {
