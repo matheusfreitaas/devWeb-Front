@@ -36,7 +36,7 @@ const answer = [
  
 class AnswerBox extends React.Component{
    state = {
-      answer: 'Bom'
+      answer: 'Bom',
     };
 
     handleChange = name => event => {

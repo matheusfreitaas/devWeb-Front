@@ -31,6 +31,7 @@ class Question extends React.Component {
                <Typography className={classes.title} color="textSecondary" gutterBottom>
                   {this.state.title}
                </Typography>
+               <hr/>
                <AnswerBox></AnswerBox>
                <TextBoxInput></TextBoxInput>
             </CardContent>

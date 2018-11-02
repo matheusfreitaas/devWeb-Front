@@ -1,35 +1,21 @@
 import React, { Component } from 'react';
 import Question from './Question';
 import PropTypes from "prop-types";
-import { withStyles, MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import Button from '@material-ui/core/Button';
-import green from '@material-ui/core/colors/green';
+import { withStyles } from "@material-ui/core/styles";
+import ConfirmationButton from './ConfirmationButton';
+
 
 const styles = theme => ({
   flexContainer: {
     display: 'flex',
     justifyContent: 'space-around',
     flexWrap: 'wrap',
-  },
-   button: {
-      margin: '2rem',
-      primary: green,
-    },
+  }
 })
 
-const theme = createMuiTheme({
-   palette: {
-     primary: green,
-   },
-   typography: {
-     useNextVariants: true,
-   },
- });
- 
-
 class Avaliation extends Component{
-   constructor() {
-      super();
+   constructor(props) {
+      super(props);
    }
 
    render() {
@@ -46,11 +32,8 @@ class Avaliation extends Component{
             <Question class='flex-item'></Question>
             <Question class='flex-item'></Question>
           </div>
-          <MuiThemeProvider theme={theme}>
-            <Button variant="contained" color="primary" className={classes.button}>
-              Enviar avaliação
-            </Button>
-          </MuiThemeProvider>
+          <ConfirmationButton buttonName={"Enviar avaliação"} 
+          dialogContent={"Você tem certeza que deseja enviar essa avaliação?"}/>
         </div>
       );
    }
