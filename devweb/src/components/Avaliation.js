@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import ConfirmationButton from './ConfirmationButton';
 
-
 const styles = theme => ({
   flexContainer: {
     display: 'flex',
@@ -14,10 +13,6 @@ const styles = theme => ({
 })
 
 class Avaliation extends Component{
-   constructor(props) {
-      super(props);
-   }
-
    render() {
       const { classes } = this.props;
 

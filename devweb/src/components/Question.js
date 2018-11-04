@@ -21,7 +21,7 @@ class Question extends React.Component {
    state = {
       title: 'Titulo', 
    };
-
+   
    render() {
       const { classes } = this.props;
       
