@@ -18,10 +18,20 @@ const styles = theme => ({
  });
 
 class Question extends React.Component {
-   state = {
-      title: 'Titulo', 
-   };
-   
+
+  constructor(props){
+    super(props);
+
+    // this.state = ({
+    //   answer: null,
+    //   coment: ""
+    // })
+  }
+
+    // onUpdate(){
+    //   this.props.updateQuestion(this.state.answer, this.state.coment); 
+    // }
+
    render() {
       const { classes } = this.props;
       
@@ -29,7 +39,7 @@ class Question extends React.Component {
          <Card className={classes.card}>
             <CardContent>
                <Typography className={classes.title} color="textSecondary" gutterBottom>
-                  {this.state.title}
+                  {this.props.title}
                </Typography>
                <hr/>
                <AnswerBox></AnswerBox>

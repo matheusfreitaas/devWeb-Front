@@ -41,7 +41,7 @@ class AnswerBox extends React.Component{
 
     handleChange = name => event => {
       this.setState({
-        [name]: event.target.value
+        [name]: event.target.value,
       });
     };  
 

@@ -42,6 +42,11 @@ class ConfirmationButton extends Component{
       this.setState({ dialog: false });
     };
 
+    handleConfirm = () => {
+      this.handleCloseDialog();
+      this.props.triggerSendAvaliation();
+    }
+
    render(){
       const {classes} = this.props;
 
@@ -49,7 +54,8 @@ class ConfirmationButton extends Component{
          <div>
             <MuiThemeProvider theme={theme}>
                <Button variant="contained" color="primary" className={classes.button} 
-               onClick={this.handleOpenDialog}>
+               onClick={this.handleOpenDialog}
+               >
                {this.props.buttonName}
                </Button>
             </MuiThemeProvider>
@@ -64,7 +70,7 @@ class ConfirmationButton extends Component{
                   <Button onClick={this.handleCloseDialog} color="primary">
                   Não
                   </Button>
-                  <Button onClick={this.handleCloseDialog} color="primary" autoFocus>
+                  <Button onClick={this.handleConfirm}  color="primary" autoFocus>
                   Sim
                   </Button>
                </DialogActions>
