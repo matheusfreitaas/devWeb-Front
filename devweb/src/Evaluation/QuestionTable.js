@@ -59,78 +59,75 @@ const CustomTableCell = withStyles(theme => ({
     }
  ];
 
- const handleChange = (name) => (event) => {
-   this.setState({
-     [name]: event.target.value
-   });
- };
+const QuestionTable  = ({questionList,  classes, onAnswerChange}) => {
 
-
-const QuestionTable  = ({questionList, children, classes}) => {
+   const handleChange = (question) => (event) => {
+      onAnswerChange(event.target.value, question);
+   }
+   
    return(
       <Paper className={classes.root}>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <CustomTableCell>Pergunta</CustomTableCell>
-            <CustomTableCell align="right">Comentário</CustomTableCell>
-            <CustomTableCell align="right">Nota</CustomTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {questionList.map((question, key) => {
-             return(
-              <TableRow className={classes.row} key={key}>
-                <CustomTableCell component="th" scope="row">
-                  {question.title}
-                </CustomTableCell>
-                <CustomTableCell align="right">
-                  <form className={classes.container} noValidate autoComplete="off">
-                        <TextField
-                           id="standard-multiline-static"
-                           label="Escreva um comentário"
-                           multiline
-                           rows="4"
-                           defaultValue= ""
-                           className={classes.textField}
-                           margin="normal"
-                        />
-                  </form>
-                </CustomTableCell>
-                <CustomTableCell align="right">
-                  <form className={classes.container} noValidate autoComplete="off">
-                     <TextField
-                        id="standard-select-currency"
-                        select
-                        label="Resposta"
-                        className={classes.textField}
-                        value={question.answer}
-                        onChange={handleChange("answer")}
-                        SelectProps={{
-                           MenuProps: {
-                           className: classes.menu
-                           }
-                        }}
-                        helperText="Escolha uma opção."
-                        margin="normal"
-                     >
-                        {answer.map(option => (
-                           <MenuItem key={option.value} value={option.value}>
-                              {option.label}
-                           </MenuItem>
-                        ))}
-                     </TextField>
-                  </form>
-                </CustomTableCell>
-              </TableRow>
-             );
-          })}
-        </TableBody>
-      </Table>
-    </Paper>
+         <Table className={classes.table}>
+            <TableHead>
+               <TableRow>
+                  <CustomTableCell>Pergunta</CustomTableCell>
+                  <CustomTableCell align="right">Comentário</CustomTableCell>
+                  <CustomTableCell align="right">Nota</CustomTableCell>
+               </TableRow>
+            </TableHead>
+            <TableBody>
+               {questionList.map((question, key) => {
+                  return(
+                  <TableRow className={classes.row} key={key}>
+                     <CustomTableCell component="th" scope="row">
+                        {question.title}
+                     </CustomTableCell>
+                     <CustomTableCell align="right">
+                        <form className={classes.container} noValidate autoComplete="off">
+                              <TextField
+                                 id="standard-multiline-static"
+                                 label="Escreva um comentário"
+                                 multiline
+                                 rows="4"
+                                 defaultValue= ""
+                                 className={classes.textField}
+                                 margin="normal"
+                              />
+                        </form>
+                     </CustomTableCell>
+                     <CustomTableCell align="right">
+                        <form className={classes.container} noValidate autoComplete="off">
+                           <TextField
+                              id="standard-select-currency"
+                              select
+                              label="Resposta"
+                              className={classes.textField}
+                              value={question.answer}
+                              onChange={handleChange(question)}
+                              SelectProps={{
+                                 MenuProps: {
+                                 className: classes.menu
+                                 }
+                              }}
+                              helperText="Escolha uma opção."
+                              margin="normal"
+                           >
+                              {answer.map(option => (
+                                 <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                 </MenuItem>
+                              ))}
+                           </TextField>
+                        </form>
+                     </CustomTableCell>
+                  </TableRow>
+                  );
+               })}
+            </TableBody>
+         </Table>
+      </Paper>
    );
 }
-
 
 QuestionTable.propTypes = {
    classes: PropTypes.object.isRequired,

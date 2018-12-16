@@ -29,6 +29,14 @@ class Evaluation extends Component{
       this.setState({isLoading: false});
    }
 
+   handleAnswerChange = (answer) => (questionChanged) => {
+      for(let i = 0; i < this.questions.lenght; i++){
+         if(this.questions[i] === questionChanged){
+            questionChanged.answer = answer;
+         }
+      }
+   }
+
    render(){
       const {
          questions, 
@@ -40,6 +48,7 @@ class Evaluation extends Component{
             ? 'Loading...'
             : <QuestionTable
             questionList={questions}
+            onAnswerChange = {this.handleAnswerChange}
             >
             Enviar
             </QuestionTable>
